@@ -1,0 +1,12 @@
+#!/bin/bash
+# remove DOS line ending, convert TABs, remove trailing spaces
+
+if [ -f "$1" ]; then
+    for f in "$@" ; do
+        mv $f $f.~
+        cat $f.~ | tr -d '\r' | expand -t 4 | sed 's/[ \t]*$//' > $f
+    done
+else
+    echo "Usage: $0 file_to_conv"
+fi
+

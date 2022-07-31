@@ -1,0 +1,22 @@
+#!/bin/bash
+# Indent with specific settings
+
+if [ -f "$1" ]; then
+ # -as, --align-with-spaces			If using tabs for indentation, use spaces for alignment.
+ # -nut, --no-tabs 				Use spaces instead of tabs.
+ # -bl, --braces-after-if-line 			Put braces on line after if, etc.
+ # -blf, --braces-after-func-def-line		Put braces on line following function definition line
+ # -in, --indent-leveln		        	Set indentation level to n spaces.
+ # -ln, --line-lengthn				Set maximum line length for non-comment lines to n.
+ # -nhnl, --ignore-newlines			Do not prefer to break long lines at the position of newlines in the input.
+ # -nbfda, --dont-break-function-decl-args 	Don’t put each argument in a function declaration on a separate line.
+ # -blin, --brace-indentn			Indent braces n spaces.
+ # -clin, --case-indentationn			Case label indent of n spaces.
+ # -cbin, --case-brace-indentationn 		Indent braces after a case label N spaces.
+ for f in "$@" ; do
+   indent -v -i4 -l180 -bl -blf -as -nut -nbbo -nbfda -nhnl -npcs -nprs -npsl -nsaf -nsai -nsaw -nfca -bli0 -cli4 -cbi0 $f
+ done
+else
+ echo "Usage: $0 file_to_conv"
+fi
+
